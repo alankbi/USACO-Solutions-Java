@@ -1,15 +1,16 @@
-package chapter1;/*
+package chapter1;
+/*
 ID: alan.bi1
 LANG: JAVA
 TASK: milk
 */
+
 import java.io.*;
 import java.util.*;
 
-public class milk
-{
-    public static void main(String[] args) throws IOException
-    {
+public class milk {
+
+    public static void main(String[] args) throws IOException {
         BufferedReader f = new BufferedReader(new FileReader("milk.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("milk.out")));
         //Scanner f = new Scanner(System.in);
@@ -20,8 +21,7 @@ public class milk
 
         int[][] farmers = new int[Integer.parseInt(st.nextToken())][2];
 
-        for(int i = 0; i < farmers.length; i++)
-        {
+        for (int i = 0; i < farmers.length; i++) {
             st = new StringTokenizer(f.readLine());
             farmers[i][0] = Integer.parseInt(st.nextToken());
             farmers[i][1] = Integer.parseInt(st.nextToken());
@@ -35,15 +35,11 @@ public class milk
         });
 
         int k = 0;
-        while (k < farmers.length)
-        {
-            if(milkNeeded > farmers[k][1])
-            {
+        while (k < farmers.length) {
+            if (milkNeeded > farmers[k][1]) {
                 milkNeeded -= farmers[k][1];
                 cost += farmers[k][0] * farmers[k][1];
-            }
-            else
-            {
+            } else {
                 cost += milkNeeded * farmers[k][0];
                 break;
             }
@@ -52,7 +48,6 @@ public class milk
         }
 
         out.println(cost);
-
 
 
         out.close();

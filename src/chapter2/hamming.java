@@ -8,8 +8,7 @@ TASK: hamming
 import java.io.*;
 import java.util.*;
 
-public class hamming
-{
+public class hamming {
     public static int[] nums;
     public static int D;
 
@@ -26,24 +25,18 @@ public class hamming
         nums[0] = 0;
         int index = 1;
 
-        for (int i = 1; i < Math.pow(2, B) && index < N; i++)
-        {
-            if (hamming(i, index))
-            {
+        for (int i = 1; i < Math.pow(2, B) && index < N; i++) {
+            if (hamming(i, index)) {
                 nums[index++] = i;
             }
         }
 
-        for(int i = 0; i < N; i++)
-        {
+        for (int i = 0; i < N; i++) {
             out.print(nums[i]);
 
-            if(i % 10 == 9 || i ==  N - 1)
-            {
+            if (i % 10 == 9 || i == N - 1) {
                 out.println();
-            }
-            else
-            {
+            } else {
                 out.print(" ");
             }
         }
@@ -51,26 +44,20 @@ public class hamming
         out.close();
     }
 
-    public static boolean hamming(int num, int index)
-    {
-        for(int i = 0; i < index; i++)
-        {
-            if(countDigits(Integer.toString(nums[i] ^ num, 2)) < D)
-            {
+    public static boolean hamming(int num, int index) {
+        for (int i = 0; i < index; i++) {
+            if (countDigits(Integer.toString(nums[i] ^ num, 2)) < D) {
                 return false;
             }
         }
         return true;
     }
 
-    public static int countDigits(String num)
-    {
+    public static int countDigits(String num) {
         int count = 0;
 
-        for (int i = 0; i < num.length(); i++)
-        {
-            if (num.charAt(i) == '1')
-            {
+        for (int i = 0; i < num.length(); i++) {
+            if (num.charAt(i) == '1') {
                 count++;
             }
         }

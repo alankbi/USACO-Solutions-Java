@@ -1,13 +1,14 @@
-package chapter1;/*
+package chapter1;
+/*
 ID: alan.bi1
 LANG: JAVA
 TASK: pprime
 */
+
 import java.io.*;
 import java.util.*;
 
-public class pprime
-{
+public class pprime {
     public static int min;
     public static int max;
 
@@ -16,8 +17,7 @@ public class pprime
 
     public static Set<Integer> set;
 
-    public static void main(String[] args) throws IOException
-    {
+    public static void main(String[] args) throws IOException {
         BufferedReader f = new BufferedReader(new FileReader("pprime.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("pprime.out")));
 
@@ -33,36 +33,29 @@ public class pprime
         maxIndex = 1;
         boolean b = true;
 
-        for(int i = 3; i < 10000; i++)
-        {
-            for(int j = 0; j < maxIndex; j++)
-            {
-                if(i % prime[j] == 0)
-                {
+        for (int i = 3; i < 10000; i++) {
+            for (int j = 0; j < maxIndex; j++) {
+                if (i % prime[j] == 0) {
                     b = false;
                     break;
                 }
             }
-            if(b)
-            {
+            if (b) {
                 prime[maxIndex++] = i;
             }
             b = true;
         }
 
 
-        if(11 >= min && 11 <= max)
-        {
+        if (11 >= min && 11 <= max) {
             set.add(11);
         }
 
-        for(int i = 0; i <= 9; i++)
-        {
+        for (int i = 0; i <= 9; i++) {
             findPal(i);
         }
 
-        for(int i : set)
-        {
+        for (int i : set) {
             out.println(i);
         }
 
@@ -70,23 +63,17 @@ public class pprime
     }
 
 
-    public static void findPal(int num)
-    {
-        if(num >= min && num <= max && isPrime(num))
-        {
+    public static void findPal(int num) {
+        if (num >= min && num <= max && isPrime(num)) {
             set.add(num);
         }
-        if(num <= max && Integer.toString(num).length() + 2 <= Integer.toString(max).length())
-        {
-            for (int i = 1; i <= 9; i++)
-            {
+        if (num <= max && Integer.toString(num).length() + 2 <= Integer.toString(max).length()) {
+            for (int i = 1; i <= 9; i++) {
                 int temp = num;
-                if (num == 0)
-                {
+                if (num == 0) {
                     num += i;
                     num += i * Math.pow(10, Integer.toString(num).length() + 1);
-                } else
-                {
+                } else {
                     num *= 10;
                     num += i;
                     num += i * Math.pow(10, Integer.toString(num).length());
@@ -95,18 +82,14 @@ public class pprime
                 findPal(num);
                 num = temp;
 
-                for(int j = 2; j <= Integer.toString(max).length() / 2; j++)
-                {
-                    if (num == 0)
-                    {
+                for (int j = 2; j <= Integer.toString(max).length() / 2; j++) {
+                    if (num == 0) {
                         num += i;
                         num += i * Math.pow(10, j * 2);
                         findPal(num);
                         //System.out.println(num);
                         num = temp;
-                    }
-                    else
-                    {
+                    } else {
                         num *= Math.pow(10, j);
                         num += i;
                         num += i * Math.pow(10, Integer.toString(num).length() + j - 1);
@@ -118,16 +101,12 @@ public class pprime
         }
     }
 
-    public static boolean isPrime(int num)
-    {
-        for(int i = 0; i < maxIndex; i++)
-        {
-            if(prime[i] >= num)
-            {
+    public static boolean isPrime(int num) {
+        for (int i = 0; i < maxIndex; i++) {
+            if (prime[i] >= num) {
                 break;
             }
-            if(num % prime[i] == 0)
-            {
+            if (num % prime[i] == 0) {
                 return false;
             }
         }

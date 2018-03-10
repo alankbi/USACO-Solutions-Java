@@ -4,13 +4,13 @@ ID: alan.bi1
 LANG: JAVA
 TASK: sort3
 */
+
 import java.io.*;
 import java.util.*;
 
-public class sort3
-{
-    public static void main(String[] args) throws IOException
-    {
+public class sort3 {
+
+    public static void main(String[] args) throws IOException {
         BufferedReader f = new BufferedReader(new FileReader("sort3.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("sort3.out")));
 
@@ -20,57 +20,47 @@ public class sort3
         int ones = 0, twos = 0, threes = 0;
         int count = 0;
 
-        for(int i = 0; i < N; i++)
-        {
+        for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(f.readLine());
 
             switch (arr[i]) {
-                case 1: ones++;
+                case 1:
+                    ones++;
                     break;
-                case 2: twos++;
+                case 2:
+                    twos++;
                     break;
-                case 3: threes++;
+                case 3:
+                    threes++;
                     break;
             }
         }
 
         int twosInOne = 0;
         int threesInOne = 0;
-        for(int i = 0; i < ones; i++)
-        {
-            if(arr[i] == 2)
-            {
+        for (int i = 0; i < ones; i++) {
+            if (arr[i] == 2) {
                 twosInOne++;
-            }
-            else if(arr[i] == 3)
-            {
+            } else if (arr[i] == 3) {
                 threesInOne++;
             }
         }
         int onesInTwo = 0;
         int threesInTwo = 0;
-        for(int i = ones; i < ones + twos; i++)
-        {
-            if(arr[i] == 1)
-            {
+        for (int i = ones; i < ones + twos; i++) {
+            if (arr[i] == 1) {
                 onesInTwo++;
-            }
-            else if(arr[i] == 3)
-            {
+            } else if (arr[i] == 3) {
                 threesInTwo++;
             }
         }
 
         int onesInThree = 0;
         int twosInThree = 0;
-        for(int i = ones + twos; i < N; i++)
-        {
-            if(arr[i] == 1)
-            {
+        for (int i = ones + twos; i < N; i++) {
+            if (arr[i] == 1) {
                 onesInThree++;
-            }
-            else if(arr[i] == 2)
-            {
+            } else if (arr[i] == 2) {
                 twosInThree++;
             }
         }

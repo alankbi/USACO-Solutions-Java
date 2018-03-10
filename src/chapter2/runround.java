@@ -4,13 +4,13 @@ ID: alan.bi1
 LANG: JAVA
 TASK: runround
 */
+
 import java.io.*;
 import java.util.*;
 
-public class runround
-{
-    public static void main(String[] args) throws IOException
-    {
+public class runround {
+
+    public static void main(String[] args) throws IOException {
         BufferedReader f = new BufferedReader(new FileReader("runround.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("runround.out")));
 
@@ -19,10 +19,8 @@ public class runround
         boolean found = false;
 
         long num = N + 1;
-        while(!found)
-        {
-            if(isSolution(num))
-            {
+        while (!found) {
+            if (isSolution(num)) {
                 out.println(num);
                 found = true;
             }
@@ -32,15 +30,12 @@ public class runround
         out.close();
     }
 
-    public static boolean isSolution(long num)
-    {
+    public static boolean isSolution(long num) {
         boolean[] digits = new boolean[10];
 
         long temp = num;
-        while(temp > 0)
-        {
-            if(digits[(int) (temp % 10)] || temp % 10 == 0)
-            {
+        while (temp > 0) {
+            if (digits[(int) (temp % 10)] || temp % 10 == 0) {
                 return false;
             }
             digits[(int) (temp % 10)] = true;
@@ -50,26 +45,19 @@ public class runround
         String str = Long.toString(num);
         int index = 0;
 
-        for(int i = 0; i < str.length(); i++)
-        {
+        for (int i = 0; i < str.length(); i++) {
             int digitIndex = Character.getNumericValue(str.charAt(index));
-            if(!digits[digitIndex])
-            {
+            if (!digits[digitIndex]) {
                 return false;
-            }
-            else
-            {
+            } else {
                 digits[digitIndex] = false;
                 index = (index + digitIndex) % str.length();
             }
         }
 
-        if(index == 0)
-        {
+        if (index == 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
